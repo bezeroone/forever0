@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Style Test</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .quiz-container {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .question.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .question h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .options {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .option-btn {
+            background: var(--light);
+            border: 2px solid transparent;
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .option-btn:hover {
+            background: var(--white);
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .result-container {
+            text-align: center;
+            display: none;
+        }
+
+        .result-type {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .result-desc {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .type-icon {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-20px);
+            }
+
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html" class="back-btn">⬅ Back</a>
+
+    <div class="container">
+        <header>
+            <h1>My Learning Style</h1>
+            <p>Answer 3 questions to find your superpowers!</p>
+        </header>
+
+        <div class="quiz-container">
+            <div id="quiz">
+                <div class="question active" data-q="1">
+                    <h3>1. How do you remember a new word best?</h3>
+                    <div class="options">
+                        <button class="option-btn" onclick="answer('visual')">📸 By seeing a picture of it</button>
+                        <button class="option-btn" onclick="answer('auditory')">🎵 By hearing a song about it</button>
+                        <button class="option-btn" onclick="answer('kinesthetic')">🏃‍♂️ By acting it out</button>
+                        <button class="option-btn" onclick="answer('readwrite')">✍️ By writing it down</button>
+                    </div>
+                </div>
+
+                <div class="question" data-q="2">
+                    <h3>2. What is your favorite activity in class?</h3>
+                    <div class="options">
+                        <button class="option-btn" onclick="answer('auditory')">🗣️ Speaking and listening</button>
+                        <button class="option-btn" onclick="answer('visual')">🎨 Drawing or looking at posters</button>
+                        <button class="option-btn" onclick="answer('readwrite')">📖 Reading stories alone</button>
+                        <button class="option-btn" onclick="answer('kinesthetic')">🎲 Playing active games</button>
+                    </div>
+                </div>
+
+                <div class="question" data-q="3">
+                    <h3>3. If you get a new LEGO set, what do you do first?</h3>
+                    <div class="options">
+                        <button class="option-btn" onclick="answer('kinesthetic')">🧱 Just start building!</button>
+                        <button class="option-btn" onclick="answer('visual')">👀 Look at the pictures on the
+                            box</button>
+                        <button class="option-btn" onclick="answer('readwrite')">📄 Read the instructions
+                            carefully</button>
+                        <button class="option-btn" onclick="answer('auditory')">❓ Ask a friend how to build it</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="result" class="result-container">
+                <span class="type-icon" id="r-icon">🌟</span>
+                <h2>Your Style Is:</h2>
+                <h1 class="result-type" id="r-title">...</h1>
+                <p class="result-desc" id="r-desc">...</p>
+                <div style="background: var(--light); padding: 1rem; border-radius: 10px;">
+                    <h3>Recommended Study Tip:</h3>
+                    <p id="r-tip"></p>
+                </div>
+                <button class="btn" onclick="location.reload()" style="margin-top: 2rem;">Retest</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let scores = { visual: 0, auditory: 0, kinesthetic: 0, readwrite: 0 };
+        let currentQ = 1;
+        const totalQ = 3;
+
+        function answer(type) {
+            scores[type]++;
+
+            const currentEl = document.querySelector(`.question[data-q="${currentQ}"]`);
+            currentEl.classList.remove('active');
+
+            if (currentQ < totalQ) {
+                currentQ++;
+                const nextEl = document.querySelector(`.question[data-q="${currentQ}"]`);
+                nextEl.classList.add('active');
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('quiz').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+
+            // Find max
+            let maxType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+
+            const results = {
+                visual: {
+                    title: "Visual Artist",
+                    icon: "🎨",
+                    desc: "You learn best by seeing! Pictures, videos, and diagrams help you understand.",
+                    tip: "Draw pictures of new vocab words or use colorful flashcards."
+                },
+                auditory: {
+                    title: "Sound Master",
+                    icon: "🎧",
+                    desc: "You learn best by listening! Songs and rhymes stick in your head.",
+                    tip: "Listen to English songs or read stories out loud to yourself."
+                },
+                kinesthetic: {
+                    title: "Action Hero",
+                    icon: "🏃",
+                    desc: "You learn best by doing! You like to move and touch things.",
+                    tip: "Use gestures to remember words or play sorting games."
+                },
+                readwrite: {
+                    title: "Word Wizard",
+                    icon: "📚",
+                    desc: "You learn best by reading and writing! You love stories and lists.",
+                    tip: "Keep a vocabulary diary or write your own short stories."
+                }
+            };
+
+            const res = results[maxType];
+            document.getElementById('r-title').innerText = res.title;
+            document.getElementById('r-icon').innerText = res.icon;
+            document.getElementById('r-desc').innerText = res.desc;
+            document.getElementById('r-tip').innerText = res.tip;
+        }
+    </script>
+</body>
+
+</html>

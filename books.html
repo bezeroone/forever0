@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Books</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .month-section {
+            margin-bottom: 4rem;
+        }
+
+        .month-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            border-bottom: 3px solid var(--secondary);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .book-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+        }
+
+        .book-cover {
+            height: 280px;
+            background: linear-gradient(135deg, #a29bfe, #74b9ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.5rem;
+            position: relative;
+        }
+
+        .book-cover::after {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        /* distinct cover colors */
+        .c1 {
+            background: linear-gradient(to bottom right, #ff7675, #d63031);
+        }
+
+        .c2 {
+            background: linear-gradient(to bottom right, #0984e3, #74b9ff);
+        }
+
+        .c3 {
+            background: linear-gradient(to bottom right, #fdcb6e, #ffeaa7);
+            color: #2d3436;
+        }
+
+        .c4 {
+            background: linear-gradient(to bottom right, #00b894, #55efc4);
+        }
+
+        .book-info {
+            padding: 1rem;
+        }
+
+        .book-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .book-author {
+            color: #636e72;
+            font-size: 0.9rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--light);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-top: 0.5rem;
+            color: var(--dark);
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html" class="back-btn">⬅ Back</a>
+
+    <div class="container">
+        <header>
+            <h1>Monthly Picks</h1>
+            <p>Discover magical stories selected just for you!</p>
+        </header>
+
+        <section class="month-section">
+            <h2 class="month-title">January Recommendations</h2>
+            <div class="books-grid">
+                <a href="https://en.wikipedia.org/wiki/Magic_Tree_House" target="_blank" class="book-card"
+                    style="text-decoration: none; color: inherit;">
+                    <div class="book-cover c1">The Magic Treehouse</div>
+                    <div class="book-info">
+                        <div class="book-title">Dinosaurs Before Dark</div>
+                        <div class="book-author">Mary Pope Osborne</div>
+                        <span class="tag">Adventure</span>
+                    </div>
+                </a>
+                <a href="https://en.wikipedia.org/wiki/Charlotte%27s_Web" target="_blank" class="book-card"
+                    style="text-decoration: none; color: inherit;">
+                    <div class="book-cover c2">Charlotte's Web</div>
+                    <div class="book-info">
+                        <div class="book-title">Charlotte's Web</div>
+                        <div class="book-author">E.B. White</div>
+                        <span class="tag">Friendship</span>
+                    </div>
+                </a>
+                <a href="https://en.wikipedia.org/wiki/Dog_Man" target="_blank" class="book-card"
+                    style="text-decoration: none; color: inherit;">
+                    <div class="book-cover c3">Dog Man</div>
+                    <div class="book-info">
+                        <div class="book-title">Dog Man: Unleashed</div>
+                        <div class="book-author">Dav Pilkey</div>
+                        <span class="tag">Comics</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="month-section">
+            <h2 class="month-title">February Recommendations</h2>
+            <div class="books-grid">
+                <a href="https://en.wikipedia.org/wiki/Wonder_(Palacio_novel)" target="_blank" class="book-card"
+                    style="text-decoration: none; color: inherit;">
+                    <div class="book-cover c4">Wonder</div>
+                    <div class="book-info">
+                        <div class="book-title">Wonder</div>
+                        <div class="book-author">R.J. Palacio</div>
+                        <span class="tag">Inspirational</span>
+                    </div>
+                </a>
+                <a href="https://en.wikipedia.org/wiki/Matilda_(novel)" target="_blank" class="book-card"
+                    style="text-decoration: none; color: inherit;">
+                    <div class="book-cover" style="background: linear-gradient(135deg, #a55eea, #8854d0);">Matilda</div>
+                    <div class="book-info">
+                        <div class="book-title">Matilda</div>
+                        <div class="book-author">Roald Dahl</div>
+                        <span class="tag">Fantasy</span>
+                    </div>
+                </a>
+                <a href="https://en.wikipedia.org/wiki/Diary_of_a_Wimpy_Kid" target="_blank" class="book-card"
+                    style="text-decoration: none; color: inherit;">
+                    <div class="book-cover" style="background: linear-gradient(135deg, #20bf6b, #26de81);">Wimpy Kid
+                    </div>
+                    <div class="book-info">
+                        <div class="book-title">Diary of a Wimpy Kid</div>
+                        <div class="book-author">Jeff Kinney</div>
+                        <span class="tag">Funny</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
