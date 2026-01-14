@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1~2월 추천 도서 - 꿈키움 도서관</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .book-img {
+            height: 250px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .book-info {
+            padding: 1rem;
+        }
+
+        .book-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .book-author {
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">📚 추천 도서</div>
+        <nav class="nav-links">
+            <a href="index.html">돌아가기</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-content">
+            <h2>❄️ 1~2월의 추천 도서</h2>
+            <p>겨울방학 동안 읽기 좋은 따뜻하고 재미있는 책들을 모았어요.</p>
+
+            <div class="book-grid">
+                <!-- Book 1 -->
+                <div class="book-card">
+                    <div class="book-img" style="background: #FFEAA7;">📕</div>
+                    <div class="book-info">
+                        <div class="book-title">눈사람 아저씨</div>
+                        <div class="book-author">레이먼드 브릭스</div>
+                        <a href="https://search.kyobobook.co.kr/search?keyword=눈사람아저씨" target="_blank" class="btn"
+                            style="width: 100%; margin-top: 10px; font-size: 0.8rem;">구매하러 가기</a>
+                    </div>
+                </div>
+                <!-- Book 2 -->
+                <div class="book-card">
+                    <div class="book-img" style="background: #74B9FF;">📘</div>
+                    <div class="book-info">
+                        <div class="book-title">겨울 왕국 이야기</div>
+                        <div class="book-author">디즈니</div>
+                        <a href="https://search.kyobobook.co.kr/search?keyword=겨울왕국" target="_blank" class="btn"
+                            style="width: 100%; margin-top: 10px; font-size: 0.8rem;">구매하러 가기</a>
+                    </div>
+                </div>
+                <!-- Book 3 -->
+                <div class="book-card">
+                    <div class="book-img" style="background: #55EFC4;">📗</div>
+                    <div class="book-info">
+                        <div class="book-title">나무 집 이야기</div>
+                        <div class="book-author">앤디 그리피스</div>
+                        <a href="https://search.kyobobook.co.kr/search?keyword=13층나무집" target="_blank" class="btn"
+                            style="width: 100%; margin-top: 10px; font-size: 0.8rem;">구매하러 가기</a>
+                    </div>
+                </div>
+                <!-- Book 4 -->
+                <div class="book-card">
+                    <div class="book-img" style="background: #A29BFE;">📙</div>
+                    <div class="book-info">
+                        <div class="book-title">해리포터와 마법사</div>
+                        <div class="book-author">JK 롤링</div>
+                        <a href="https://search.kyobobook.co.kr/search?keyword=해리포터" target="_blank" class="btn"
+                            style="width: 100%; margin-top: 10px; font-size: 0.8rem;">구매하러 가기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 꿈키움 초등학교 도서관.</p>
+    </footer>
+</body>
+
+</html>
