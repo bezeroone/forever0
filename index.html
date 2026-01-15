@@ -1,52 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Fun World</title>
+    <title>신문사설 검색</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-icon"><i class="fa-solid fa-newspaper"></i></span>
+            <span class="logo-text">EDITORIALS</span>
+        </div>
+        <div class="header-right">
+            <button class="admin-login-btn">
+                <i class="fa-solid fa-user-shield"></i> 관리자 로그인
+            </button>
+        </div>
+    </header>
 
-    <div class="container">
-        <header>
-            <h1>이윤정's English Fun World</h1>
-            <p>Ready to explore? Choose your adventure!</p>
-        </header>
-
-        <section class="menu-grid">
-            <a href="tetris.html" class="menu-item card-tetris">
-                <span class="icon">🎮</span>
-                <h2>Word Tetris</h2>
-                <p>Play & Learn Vocabulary with Blocks!</p>
-            </a>
-
-            <a href="books.html" class="menu-item card-books">
-                <span class="icon">📚</span>
-                <h2>Jan-Feb Books</h2>
-                <p>Top Picks for Young Readers</p>
-            </a>
-
-            <a href="diagnostic.html" class="menu-item card-quiz">
-                <span class="icon">🔍</span>
-                <h2>Study Style Test</h2>
-                <p>What kind of learner are you?</p>
-            </a>
-
-            <a href="crafts.html" class="menu-item card-craft">
-                <span class="icon">✂️</span>
-                <h2>Craft Kit</h2>
-                <p>Make Magic with Book Crafts</p>
-            </a>
+    <main class="container">
+        <section class="hero-section">
+            <h1 class="main-title">이윤정쌤의 신문사설 검색 톡톡!</h1>
+            <p class="subtitle">다양한 신문 사설을 여러가지 조건으로 검색해보세요!</p>
         </section>
+
+        <section class="search-section">
+            <div class="search-card">
+                <!-- 통합 검색 -->
+                <div class="search-group full-width">
+                    <label for="search-all">통합 검색</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="search-all" placeholder="전체 텍스트에서 검색할 단어를 입력하세요...">
+                    </div>
+                </div>
+
+                <!-- 추천 검색어 -->
+                <div class="recommendation-area">
+                    <span class="rec-label">추천 검색어:</span>
+                    <div class="rec-chips">
+                        <button class="chip" data-keyword="디지털">#디지털</button>
+                        <button class="chip" data-keyword="기후">#기후</button>
+                        <button class="chip" data-keyword="저출산">#저출산</button>
+                        <button class="chip" data-keyword="의대">#의대</button>
+                        <button class="chip" data-keyword="가계부채">#가계부채</button>
+                        <button class="chip" data-keyword="우주">#우주</button>
+                        <button class="chip" data-keyword="노인">#노인</button>
+                        <button class="chip" data-keyword="전세사기">#전세사기</button>
+                        <button class="chip" data-keyword="저작권">#저작권</button>
+                        <button class="chip" data-keyword="반도체">#반도체</button>
+                    </div>
+                </div>
+
+                <div class="divider"><span>상세 검색 옵션</span></div>
+
+                <div class="search-grid">
+                    <!-- 작성자 검색 -->
+                    <div class="search-group">
+                        <label for="search-author">작성자</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user-pen"></i>
+                            <input type="text" id="search-author" placeholder="작성자 이름">
+                        </div>
+                    </div>
+
+                    <!-- 구조별 검색 -->
+                    <div class="search-group">
+                        <label for="search-background">배경 (Background)</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-flag"></i>
+                            <input type="text" id="search-background" placeholder="사설 배경 내용">
+                        </div>
+                    </div>
+
+                    <div class="search-group">
+                        <label for="search-evidence">근거 (Evidence)</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                            <input type="text" id="search-evidence" placeholder="주장의 근거">
+                        </div>
+                    </div>
+
+                    <div class="search-group">
+                        <label for="search-argument">주장 (Argument)</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-bullhorn"></i>
+                            <input type="text" id="search-argument" placeholder="핵심 주장">
+                        </div>
+                    </div>
+
+                    <div class="search-group">
+                        <label for="search-fact">사실 (Fact)</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <input type="text" id="search-fact" placeholder="객관적 사실">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-actions">
+                    <button id="search-btn" class="btn-primary"
+                        style="width: auto; padding: 0.5rem 2rem; margin-right: 0.5rem;">검색</button>
+                    <button id="reset-btn" class="secondary-btn">초기화</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <div class="results-header">
+                <h2>검색 결과 <span id="result-count">0</span>건</h2>
+            </div>
+            <div id="results-grid" class="results-grid">
+                <!-- 결과 카드가 여기에 동적으로 추가됩니다 -->
+                <div class="loading-state">데이터를 불러오는 중입니다...</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">관리자 로그인</h3>
+                <button class="close-btn" data-target="login-modal">&times;</button>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">아이디</label>
+                    <input type="text" id="username" placeholder="아이디 입력" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" placeholder="비밀번호 입력" required>
+                </div>
+                <div id="login-error" class="error-message">아이디 또는 비밀번호가 올바르지 않습니다.</div>
+                <button type="submit" class="btn-primary">로그인</button>
+            </form>
+        </div>
     </div>
 
-    <footer>
-        <p>© 2026 English Fun World | Elementary School Library</p>
-    </footer>
+    <!-- Edit/Add Modal -->
+    <div id="edit-modal" class="modal-overlay">
+        <div class="modal-content edit-modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="edit-modal-title">사설 추가/수정</h3>
+                <button class="close-btn" data-target="edit-modal">&times;</button>
+            </div>
+            <form id="edit-form">
+                <input type="hidden" id="edit-id">
+                <div class="form-group">
+                    <label>제목</label>
+                    <input type="text" id="edit-title" required>
+                </div>
+                <div class="form-group">
+                    <label>작성자</label>
+                    <input type="text" id="edit-author" required>
+                </div>
+                <div class="form-group">
+                    <label>날짜</label>
+                    <input type="date" id="edit-date" required>
+                </div>
+                <div class="form-group">
+                    <label>배경 (Background)</label>
+                    <textarea id="edit-background" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>근거 (Evidence)</label>
+                    <textarea id="edit-evidence" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>주장 (Argument)</label>
+                    <textarea id="edit-argument" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>사실 (Fact)</label>
+                    <textarea id="edit-fact" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">저장하기</button>
+            </form>
+        </div>
+    </div>
 
+    <script src="script.js"></script>
 </body>
 
 </html>
